@@ -1,0 +1,5 @@
+# copy readme file to install path
+include *.md
+
+# copy shaders
+recursive-include monoport/lib/render/gl/shaders *
