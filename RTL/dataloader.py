@@ -7,12 +7,13 @@ in `./_utils/worker.py`.
 import threading
 import itertools
 import warnings
+import queue
 
 import multiprocessing as python_multiprocessing
 import torch
 import torch.multiprocessing as multiprocessing
 from torch._utils import ExceptionWrapper
-from torch._six import queue, string_classes
+from torch._six import string_classes
 
 from torch.utils.data import IterableDataset, Sampler, SequentialSampler, RandomSampler, BatchSampler
 from torch.utils.data import _utils
@@ -1018,9 +1019,6 @@ These **needs** to be in global scope since Py2 doesn't support serializing
 static methods.
 """
 
-import torch
-from torch._six import queue, container_abcs, string_classes
-from torch._utils import ExceptionWrapper
 MP_STATUS_CHECK_INTERVAL = 5.0
 
 def _postprocess_loop(in_queue, out_queue, device_id, done_event, processor):
